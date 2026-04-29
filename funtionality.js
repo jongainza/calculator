@@ -28,3 +28,11 @@ function operate(a,b,ope){
  }
 }
 console.log('hello world');
+
+
+const buttons = document.querySelectorAll('.btn');
+
+buttons.forEach(btn=>btn.addEventListener('click',function(){
+ console.log(btn.textContent);
+ 
+}))
