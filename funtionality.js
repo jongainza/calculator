@@ -14,16 +14,16 @@ function divide (a,b){
 function operate(a,b,ope){
  switch(ope){
   case "+":
-   add(a,b);
+   return add(a,b);
    break;
    case "-":
-   subtract(a,b);
+   return subtract(a,b);
    break;
    case '*':
-    multiply(a,b);
+    return multiply(a,b);
     break;
     case '/':
-     divide(a,b);
+     return divide(a,b);
      break;
  }
 }
@@ -31,8 +31,27 @@ console.log('hello world');
 
 
 const buttons = document.querySelectorAll('.btn');
+const display = document.querySelector('.display')
+
+
+let displayString = "";
+
 
 buttons.forEach(btn=>btn.addEventListener('click',function(){
- console.log(btn.textContent);
+    const text = btn.textContent.trim()
+    const isNum = text !== "" && Number.isFinite(Number(text));
+
+    if(isNum){
+        console.log(text);
+        
+        displayString += btn.textContent;
+        console.log(display);
+        
+        display.textContent=displayString
+    }
+
+
+ 
  
 }))
+
