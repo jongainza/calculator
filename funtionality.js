@@ -38,9 +38,11 @@ let displayString = "";
 
 
 buttons.forEach(btn=>btn.addEventListener('click',function(){
+    // check if button pressed is a number
     const text = btn.textContent.trim()
     const isNum = text !== "" && Number.isFinite(Number(text));
-
+    const isTog = text === "+/-";
+    //  if is a number add it to the display
     if(isNum){
         console.log(text);
         
@@ -48,6 +50,16 @@ buttons.forEach(btn=>btn.addEventListener('click',function(){
         console.log(display);
         
         display.textContent=displayString
+    }else if(isTog){
+        if (!displayString.startsWith("-")&& displayString!==0){
+            displayString="-"+displayString
+                    display.textContent = displayString;
+
+        }else{
+            displayString = displayString.slice(1);
+                    display.textContent = displayString;
+
+        }
     }
 
 
