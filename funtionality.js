@@ -27,14 +27,13 @@ function operate(a,b,ope){
      break;
  }
 }
-console.log('hello world');
 
 
 const buttons = document.querySelectorAll('.btn');
 const display = document.querySelector('.display')
 
 
-let displayString = "";
+let displayString = "0";
 
 
 buttons.forEach(btn=>btn.addEventListener('click',function(){
@@ -42,28 +41,44 @@ buttons.forEach(btn=>btn.addEventListener('click',function(){
     const text = btn.textContent.trim()
     const isNum = text !== "" && Number.isFinite(Number(text));
     const isTog = text === "+/-";
+    const del =text ==="⌫"
     //  if is a number add it to the display
     if(isNum){
-        console.log(text);
+        if(displayString==="0"){
+            displayString=''
+            displayString = btn.textContent;
+        }else{
+            displayString += btn.textContent;
+        }
         
-        displayString += btn.textContent;
-        console.log(display);
         
-        display.textContent=displayString
+        
+        
     }else if(isTog){
         if (!displayString.startsWith("-")&& displayString!==0){
             displayString="-"+displayString
-                    display.textContent = displayString;
+                  
 
         }else{
             displayString = displayString.slice(1);
-                    display.textContent = displayString;
+                    
 
         }
+    }else if(del){
+        displayString= displayString.slice(0,-1)
+        console.log(displayString);
+        
+        if(displayString===""){
+            displayString="0"
+        }
+
     }
 
+        
+            display.textContent = displayString;
+        
+         
 
- 
  
 }))
 
