@@ -47,7 +47,7 @@ flex-direction: column;
 .val{
  background-color: rgb(125, 124, 124);
 }
-.calc{
+.calc,.equal{
  background-color: orange;
 }
 .buttons :nth-child(1){
